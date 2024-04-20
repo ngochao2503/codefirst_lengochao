@@ -1,0 +1,90 @@
+﻿@model IEnumerable<codefirst_lengochao.Models.SinhVien>
+
+@* 
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Thông tin sinh viên</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Ten)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Tuoi)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Lop)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Ten)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Tuoi)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Lop.LopId)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.SinhVienId">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.SinhVienId">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.SinhVienId">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table> *@
+
+
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<hr />
+<form>
+    <h2>Thông tin sinh viên trong khoa công nghệ số</h2>
+
+    @if (Model != null && Model.Any())
+    {
+        <table class="table table-responsive table-hover">
+            <thead>
+                <tr class="table-active">
+                    <th>MSV</th>
+                    <th>Tên</th>
+                    <th>Tuổi</th>
+                    <th>Mã lớp</th>
+
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var sv in Model)
+                {
+                    <tr>
+                        <td>@sv.SinhVienId</td>
+                        <td>@sv.Ten</td>
+                        <td>@sv.Tuoi</td>
+                        <td>@sv.LopId</td>
+
+                    </tr>
+                }
+            </tbody>
+        </table>
+    }
+    else
+    {
+        <p>Không có dữ liệu để hiển thị.</p>
+    }
+</form>
+</div>
